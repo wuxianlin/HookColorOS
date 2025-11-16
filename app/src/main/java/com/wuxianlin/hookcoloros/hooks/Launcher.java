@@ -35,7 +35,7 @@ public class Launcher {
                 XposedBridge.log(t);
             }
         }
-        if (prefs.getBoolean("hook_hook_recents_auto_focus_to_next_page", true)){
+        if (prefs.getBoolean("hook_recents_auto_focus_to_next_page", true)){
             try{
                 hookRecentsAutoFocusToNextPage(lpparam);
             } catch (Throwable t){
@@ -84,7 +84,8 @@ public class Launcher {
     }
 
     private static void hookRecentsAutoFocusToNextPage(final XC_LoadPackage.LoadPackageParam lpparam) {
-        XposedHelpers.findAndHookMethod("com.android.common.util.AppFeatureUtils", lpparam.classLoader,
+        XposedBridge.hookAllMethods(
+                XposedHelpers.findClass("com.android.common.util.AppFeatureUtils", lpparam.classLoader),
                 "isSupportAutoFocusToNextPageInOverviewState", XC_MethodReplacement.returnConstant(false));
     }
 

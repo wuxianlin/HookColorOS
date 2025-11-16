@@ -10,5 +10,6 @@
         <item>com.oplus.appplatform</item>
         <item>com.heytap.appplatform</item>
         <item>com.android.systemui</item>
+        <item>com.oplus.notificationmanager</item>
     </string-array>
 </resources>

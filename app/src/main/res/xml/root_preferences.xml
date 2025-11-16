@@ -15,7 +15,7 @@
         <SwitchPreferenceCompat
             app:title="@string/recents_auto_focus_to_next_page"
             app:defaultValue="true"
-            app:key="hook_hook_recents_auto_focus_to_next_page"/>
+            app:key="hook_recents_auto_focus_to_next_page"/>
         <SwitchPreferenceCompat
             app:title="@string/home_auto_close_folder"
             app:defaultValue="true"

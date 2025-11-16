@@ -62,6 +62,8 @@ public class Hook implements IXposedHookZygoteInit, IXposedHookInitPackageResour
                 Feature.hookAppFeature(lpparam, colorOsVersion, prefs);
         } else if("com.heytap.appplatform".equals(lpparam.packageName)){
             Feature.hookAppFeature(lpparam, colorOsVersion, prefs);
+        } else if("com.oplus.notificationmanager".equals(lpparam.packageName)){
+            NotificationManager.hookVolume(lpparam, colorOsVersion, prefs);
         }
     }
 
