@@ -12,6 +12,8 @@
     <string name="settings">设置</string>
     <string name="settings_dsu">DSU 动态系统更新</string>
     <string name="settings_dsu_desc">设置->开发者选项->DSU Loader</string>
+    <string name="settings_remove_cn_gms">移除CN GMS</string>
+    <string name="settings_keep_gms_switch">保留GMS开关</string>
     <string name="systemui">状态栏与控制中心</string>
     <string name="systemui_volume">移除控制中心音量调节</string>
 </resources>

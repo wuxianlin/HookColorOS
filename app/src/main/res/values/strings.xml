@@ -12,6 +12,8 @@
     <string name="settings">Settings</string>
     <string name="settings_dsu">Dynamic System Update</string>
     <string name="settings_dsu_desc">Settings->Developer Options->DSU Loader</string>
+    <string name="settings_remove_cn_gms">Remove CN GMS</string>
+    <string name="settings_keep_gms_switch">Keep GMS Switch</string>
     <string name="systemui">SystemUI</string>
     <string name="systemui_volume">Remove Volume SeekBar</string>
 </resources>

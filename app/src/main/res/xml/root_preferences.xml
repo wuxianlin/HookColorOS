@@ -29,6 +29,15 @@
             app:summary="@string/settings_dsu_desc"
             app:defaultValue="true"
             app:key="hook_dsu"/>
+        <SwitchPreferenceCompat
+            app:title="@string/settings_remove_cn_gms"
+            app:defaultValue="true"
+            app:key="hook_remove_cn_gms"/>
+        <SwitchPreferenceCompat
+            app:title="@string/settings_keep_gms_switch"
+            app:defaultValue="true"
+            app:dependency="hook_remove_cn_gms"
+            app:key="hook_keep_gms_switch"/>
     </PreferenceCategory>
     <PreferenceCategory
         app:title="@string/systemui"

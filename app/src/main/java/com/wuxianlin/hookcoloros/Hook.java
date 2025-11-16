@@ -45,6 +45,7 @@ public class Hook implements IXposedHookZygoteInit, IXposedHookInitPackageResour
             Feature.hookOplusFeature(lpparam, colorOsVersion, prefs);
             MultiApp.hookAndroid(lpparam, colorOsVersion, prefs);
             Feature.hookPms(lpparam, colorOsVersion, prefs);
+            Feature.hookSystemConfig(lpparam, colorOsVersion, prefs);
         } else if ("com.android.launcher".equals(lpparam.packageName) ||
                 "com.oppo.launcher".equals(lpparam.packageName)) {
             Launcher.hookLauncher(lpparam, colorOsVersion, prefs);
@@ -54,6 +55,7 @@ public class Hook implements IXposedHookZygoteInit, IXposedHookInitPackageResour
             SystemUI.hookVolume(lpparam, colorOsVersion, prefs);
         } else if("com.android.settings".equals(lpparam.packageName)) {
             Settings.hookDsu(lpparam, colorOsVersion, prefs);
+            Settings.hookGms(lpparam, colorOsVersion, prefs);
         } else if("com.oplus.customize.coreapp".equals(lpparam.packageName)){
             if(colorOsVersion<ColorOSUtils.OplusOS_13_0)
                 Feature.hookAppFeature(lpparam, colorOsVersion, prefs);

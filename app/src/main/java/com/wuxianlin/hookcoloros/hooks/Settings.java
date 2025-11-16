@@ -9,6 +9,7 @@ import com.wuxianlin.hookcoloros.ColorOSUtils;
 import java.util.List;
 
 import de.robv.android.xposed.XC_MethodHook;
+import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
@@ -75,5 +76,13 @@ public class Settings {
                 XposedHelpers.callMethod(preferenceCategory, "addPreference", preference);
             }
         });
+    }
+
+    public static void hookGms(final XC_LoadPackage.LoadPackageParam lpparam,
+                               int colorOsVersion, XSharedPreferences prefs){
+        if (prefs.getBoolean("hook_remove_cn_gms",true) && prefs.getBoolean("hook_keep_gms_switch",true)) {
+            XposedHelpers.findAndHookMethod("com.oplus.settings.utils.SettingsUtils", lpparam.classLoader,
+                    "isGoogleAccountSupport", XC_MethodReplacement.returnConstant(true));
+        }
     }
 }

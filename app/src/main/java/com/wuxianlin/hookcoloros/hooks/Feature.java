@@ -5,7 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
+import android.os.Binder;
 import android.os.Build;
+import android.util.ArrayMap;
 
 import com.wuxianlin.hookcoloros.ColorOSUtils;
 import com.wuxianlin.hookcoloros.HookUtils;
@@ -36,10 +38,23 @@ public class Feature {
                         ||name.equals("oppo.settings.account.dialog.disallow")
                         /*||name.equals("oppo.systemui.notdisadblenotification.dm")*/)
                     param.setResult(true);
-                else if((Build.MODEL.endsWith("t")||Build.MODEL.endsWith("T00")||Build.MODEL.endsWith("T10")||Build.MODEL.endsWith("T20"))&&name.equals("oppo.common_center.lock.simcard"))
+                else if("oppo.common_center.lock.simcard".equals(name) && (Build.MODEL.endsWith("t")||Build.MODEL.endsWith("T00")||Build.MODEL.endsWith("T10")||Build.MODEL.endsWith("T20")))
                     param.setResult(false);
-                else if(/*"cn.google.services".equals(name)||*/"com.google.android.feature.services_updater".equals(name))
-                    param.setResult(false);
+            }
+        });
+    }
+
+    public static void hookSystemConfig(final XC_LoadPackage.LoadPackageParam lpparam,
+                                        int colorOsVersion, XSharedPreferences prefs) {
+        XposedHelpers.findAndHookMethod("com.android.server.SystemConfig",
+                lpparam.classLoader, "getAvailableFeatures", new XC_MethodHook() {
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                ArrayMap<String, Object> res = (ArrayMap<String, Object>)param.getResult();
+                if (prefs.getBoolean("hook_remove_cn_gms", true)) {
+                    res.remove("cn.google.services");
+                    res.remove("com.google.android.feature.services_updater");
+                }
             }
         });
     }
