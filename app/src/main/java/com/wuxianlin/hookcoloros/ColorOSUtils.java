@@ -41,6 +41,8 @@ public class ColorOSUtils {
     public static final int OS_14_1_0 = 33;
     public static final int OS_15_0_0 = 34;
     public static final int OS_15_0_1 = 35;
+    public static final int OS_15_0_2 = 36;
+    public static final int OS_16_0 = 37;
 
     public static int getColorOSVersion() {
         try {

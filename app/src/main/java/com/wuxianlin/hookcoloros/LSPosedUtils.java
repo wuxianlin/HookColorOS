@@ -19,7 +19,7 @@ public class LSPosedUtils {
     public static boolean checkLSPosed(Context context) {
         if (checked)
             return checkResult;
-        try {
+        /*try {
             Class<?> clazz = Class.forName("android.app.ContextImpl");
             if(clazz!=null){
                 Method method = clazz.getMethod("getSharedPreferencesPath", String.class);//getPreferencesDir
@@ -43,7 +43,7 @@ public class LSPosedUtils {
         } catch (SecurityException
                  | ClassNotFoundException | NoSuchMethodException
                  | InvocationTargetException | IllegalAccessException e) {
-        }
+        }*/
         try {
             context.getSharedPreferences(context.getPackageName() + "_preferences",
                     Context.MODE_WORLD_READABLE);
